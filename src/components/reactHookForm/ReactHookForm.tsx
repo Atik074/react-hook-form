@@ -1,4 +1,4 @@
-import { FieldValues, useForm } from "react-hook-form";
+import { FieldValues, FormProvider, useForm } from "react-hook-form";
 import cn from "../../util/cn";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TNormalForm, signUpShcema , } from "./Validation";
@@ -8,9 +8,11 @@ import { TNormalForm, signUpShcema , } from "./Validation";
 
 
 const ReactHookForm = () => {
-    const {register , handleSubmit, formState:{errors}} = useForm<TNormalForm>({
+    const methods = useForm<TNormalForm>({
             resolver:zodResolver(signUpShcema)
     })
+
+    const {register , handleSubmit, formState:{errors}}  =methods
 
     const onSubmit = (data:FieldValues) =>{
         console.log(data)
@@ -18,7 +20,8 @@ const ReactHookForm = () => {
    const double = true;
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}
+        <FormProvider {...methods}>
+             <form onSubmit={methods.handleSubmit(onSubmit)}
          className={cn("mt-10 w-full   border p-6" ,{
            "max-w-5xl" : double ,
            "max-w-md"  : !double 
@@ -76,6 +79,9 @@ const ReactHookForm = () => {
          </div>
            
         </form>
+
+        </FormProvider>
+       
     );
 };
 
