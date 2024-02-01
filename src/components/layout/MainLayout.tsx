@@ -4,6 +4,7 @@ import { Form } from "../reactHookForm/Form";
 import { FormSection } from "../reactHookForm/FormSection";
 import { FormSubmit } from "../reactHookForm/FormSubmit";
 import { FieldValues, useForm } from "react-hook-form";
+import { Input } from "../../ReuseableForm/input";
 
 
 const MainLayout = () => {
@@ -17,7 +18,7 @@ const MainLayout = () => {
         <div className="w-[1250px] mx-auto">
               <ReactHookForm/>
              {/* barrel Pattern */}
-             <Form onSubmit={handleSubmit(onSubmit)}>
+             <Form double={true} onSubmit={handleSubmit(onSubmit)}>
                 <FormSection>
 
                 <div className="w-full max-w-md">
@@ -29,6 +30,16 @@ const MainLayout = () => {
                     )}
           
                     </div>
+
+                 <Input 
+                     type='text'
+                        register={register('text')}
+                        label= "Name"
+                         errors={errors}
+                    />
+                     
+
+
 
                 </FormSection>
                 <FormSubmit/>
