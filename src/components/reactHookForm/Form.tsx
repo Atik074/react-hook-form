@@ -1,9 +1,10 @@
 import { createContext } from "react";
 import cn from "../../util/cn";
+import { TForm } from "../../types/Form.types";
 
 export const FormELementContext = createContext<{double: boolean} | null>(null)
 
-export const Form = ({children , onSubmit, double}) => {
+export const Form = ({children , onSubmit, double}:TForm) => {
    
     return (
 

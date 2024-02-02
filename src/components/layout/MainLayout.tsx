@@ -4,7 +4,8 @@ import { Form } from "../reactHookForm/Form";
 import { FormSection } from "../reactHookForm/FormSection";
 import { FormSubmit } from "../reactHookForm/FormSubmit";
 import { FieldValues, useForm } from "react-hook-form";
-import { Input } from "../../ReuseableForm/input";
+import { Input } from "../../ReuseableForm/Input";
+import { SubmitHandler } from "react-hook-form";
 
 
 const MainLayout = () => {
